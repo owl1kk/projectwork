@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Website | Artur</title>
+
+  <style>
+    :root {
+      --bg: #0d1020;
+      --bg-soft: #151933;
+      --card: rgba(255,255,255,0.08);
+      --text: #f4f5ff;
+      --muted: #b8bdd6;
+      --accent: #8b7cff;
+      --accent-2: #53d7c7;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 18px 45px rgba(0,0,0,0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(139,124,255,0.18), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(83,215,199,0.15), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background .3s, color .3s;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: rgba(13,16,32,0.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--accent-2);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: center;
+      gap: 60px;
+      padding: 80px 0 60px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--accent-2);
+      background: var(--card);
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: .95;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+    }
+
+    h1 .accent {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: transform .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), #6f61e8);
+      color: white;
+      border: none;
+    }
+
+    .btn.secondary {
+      background: var(--card);
+    }
+
+    .profile-card {
+      padding: 26px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+    }
+
+    .avatar {
+      height: 330px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 30px;
+      background:
+        linear-gradient(145deg, rgba(139,124,255,.35), rgba(83,215,199,.12)),
+        var(--bg-soft);
+      border: 1px solid var(--border);
+      font-size: 5rem;
+    }
+
+    .profile-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-head {
+      margin-bottom: 32px;
+    }
+
+    .section-number {
+      color: var(--accent-2);
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-top: 4px;
+      line-height: 1.1;
+    }
+
+    .section-subtitle {
+      margin-top: 10px;
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(139,124,255,0.13);
+      border: 1px solid var(--border);
+      font-size: .88rem;
+    }
+
+    .personality-layout,
+    .future-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .big-card {
+      padding: 32px;
+      background: linear-gradient(145deg, rgba(139,124,255,.16), rgba(83,215,199,.08));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+    }
+
+    .big-card p + p {
+      margin-top: 14px;
+    }
+
+    .holiday {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .holiday-slider {
+      position: relative;
+      min-height: 380px;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+    }
+
+    .holiday-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .45s ease;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .holiday-slide.active {
+      opacity: 1;
+    }
+
+    .holiday-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 45%, rgba(0,0,0,.72));
+    }
+
+    .holiday-slide:nth-child(1) {
+      background-image: url("vietnam1.jpg");
+      background-color: #42b5b0;
+    }
+
+    .holiday-slide:nth-child(2) {
+      background-image: url("vietnam2.jpg");
+      background-color: #d8a86b;
+    }
+
+    .holiday-slide:nth-child(3) {
+      background-image: url("vietnam3.jpg");
+      background-color: #6c68b8;
+    }
+
+    .holiday-slide:nth-child(4) {
+      background-image: url("vietnam4.jpg");
+      background-color: #388c9c;
+    }
+
+    .slide-info {
+      position: absolute;
+      left: 26px;
+      bottom: 25px;
+      z-index: 2;
+      color: white;
+    }
+
+    .slide-info h3 {
+      font-size: 2rem;
+      margin-top: 3px;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 50%;
+      background: rgba(0,0,0,.38);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    .slider-btn:hover {
+      background: rgba(0,0,0,.62);
+    }
+
+    .slider-btn.prev {
+      left: 14px;
+    }
+
+    .slider-btn.next {
+      right: 14px;
+    }
+
+    .slider-dots {
+      position: absolute;
+      z-index: 3;
+      right: 22px;
+      bottom: 22px;
+      display: flex;
+      gap: 7px;
+    }
+
+    .slider-dot {
+      width: 8px;
+      height: 8px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.45);
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .slider-dot.active {
+      background: white;
+      transform: scale(1.25);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .photo {
+      min-height: 270px;
+      border-radius: 22px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .photo:nth-child(1) {
+      background: linear-gradient(160deg, #4bb5bf, #d8c47e);
+    }
+
+    .photo:nth-child(2) {
+      background: linear-gradient(160deg, #7d6bea, #1c2545);
+    }
+
+    .photo:nth-child(3) {
+      background: linear-gradient(160deg, #202632, #75898f);
+    }
+
+    .photo:nth-child(4) {
+      background: linear-gradient(160deg, #f49d6e, #6356bf);
+    }
+
+    .photo::before {
+      content: "Replace with your photo";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,.75);
+      font-size: .9rem;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .photo-caption {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      padding: 12px;
+      background: rgba(0,0,0,.55);
+      color: white;
+      border-radius: 14px;
+      backdrop-filter: blur(8px);
+      font-size: .85rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item {
+      padding: 18px 20px;
+      border-left: 3px solid var(--accent);
+      background: var(--card);
+      border-radius: 0 16px 16px 0;
+    }
+
+    .timeline-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item span {
+      color: var(--muted);
+    }
+
+    .ai-box {
+      background: linear-gradient(145deg, rgba(139,124,255,.19), rgba(83,215,199,.12));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 34px;
+    }
+
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .ai-item {
+      padding: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    .ai-item h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .ai-item p {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    footer {
+      padding: 45px 0 60px;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: .7s ease;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 850px) {
+      .nav-links a {
+        display: none;
+      }
+
+      .hero,
+      .holiday,
+      .personality-layout,
+      .future-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+
+      .profile-card {
+        transform: none;
+      }
+
+      .grid,
+      .gallery,
+      .ai-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grid,
+      .gallery,
+      .ai-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo">ARTUR<span>.</span></a>
+
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#personality">Personality</a>
+          <a href="#holiday">Holiday</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#future">Future</a>
+          <a href="#ai">AI</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container fade" id="home">
+      <div>
+        <span class="eyebrow">My English Project · 2026</span>
+        <h1>Hello, I'm <span class="accent">Artur.</span></h1>
+        <p>
+          Welcome to my personal website. Here you can learn more about me,
+          my personality, my favourite holiday, my hobbies and my plans for the future.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn primary" href="#about">Explore my website</a>
+          <a class="btn secondary" href="#ai">How AI helped me</a>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="avatar">👨‍💻</div>
+        <div class="profile-meta">
+          <span>18 years old</span>
+          <span>Almaty, Kazakhstan</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="fade">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-number">01 · About me</div>
+          <h2>A little about me</h2>
+          <p class="section-subtitle">
+            I am interested in technology, music, sport and learning new things.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>🎓 Study</h3>
+            <p>
+              My name is Artur and I am 18 years old. I study at International
+              Information Technology University in Almaty.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>💻 Technology</h3>
+            <p>
+              I like computers, programming and network security.
+              I enjoy learning how websites, networks and applications work.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>🎧 Free time</h3>
+            <p>
+              In my free time I listen to music, go to the gym, meet my friends
+              and sometimes go skating.
+            </p>
+          </div>
+        </div>
+
+        <div class="tag-list">
+          <span class="tag">Technology</span>
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">Music</span>
+          <span class="tag">Gym</span>
+          <span class="tag">Skating</span>
+          <span class="tag">Travelling</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="personality" class="fade">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-number">02 · My personality</div>
+          <h2>How I would describe myself</h2>
+        </div>
+
+        <div class="personality-layout">
+          <div class="big-card">
+            <h3>My character</h3>
+            <p>
+              I think I am a calm, friendly and curious person.
+              I like spending time with people I know, but I also enjoy working alone.
+            </p>
+            <p>
+              When I am interested in something, I try to understand it well.
+              I also like humour and I usually stay positive.
+            </p>
+          </div>
+
+          <div class="big-card">
+            <h3>My appearance</h3>
+            <p>
+              I am of average height and I have dark hair.
+              I usually prefer casual clothes and comfortable streetwear.
+            </p>
+            <p>
+              My style is simple, but I like unusual details and modern fashion.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="holiday" class="fade">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-number">03 · My favourite holiday</div>
+          <h2>My trip to Vietnam</h2>
+        </div>
+
+        <div class="holiday">
+          <div class="holiday-slider" id="holidaySlider">
+            <div class="holiday-slide active">
+              <div class="slide-info">
+                <small>Cam Ranh · Vietnam</small>
+                <h3>Summer memories</h3>
+              </div>
+            </div>
+
+            <div class="holiday-slide">
+              <div class="slide-info">
+                <small>Vietnam · 2026</small>
+                <h3>Beautiful places</h3>
+              </div>
+            </div>
+
+            <div class="holiday-slide">
+              <div class="slide-info">
+                <small>Vietnam · 2026</small>
+                <h3>Local culture</h3>
+              </div>
+            </div>
+
+            <div class="holiday-slide">
+              <div class="slide-info">
+                <small>Cam Ranh · Vietnam</small>
+                <h3>Sea & nature</h3>
+              </div>
+            </div>
+
+            <button class="slider-btn prev" id="prevSlide" aria-label="Previous photo">‹</button>
+            <button class="slider-btn next" id="nextSlide" aria-label="Next photo">›</button>
+
+            <div class="slider-dots">
+              <button class="slider-dot active" data-slide="0" aria-label="Photo 1"></button>
+              <button class="slider-dot" data-slide="1" aria-label="Photo 2"></button>
+              <button class="slider-dot" data-slide="2" aria-label="Photo 3"></button>
+              <button class="slider-dot" data-slide="3" aria-label="Photo 4"></button>
+            </div>
+          </div>
+
+          <div class="big-card">
+            <p>
+              One of my favourite trips was my holiday in Vietnam.
+              I visited Cam Ranh with my family and stayed there for about ten days.
+            </p>
+            <p>
+              The weather was hot, the sea was warm and the nature was very beautiful.
+              I liked trying local food, visiting interesting places and relaxing near the sea.
+            </p>
+            <p>
+              I also saw temples and learned a little about Vietnamese culture.
+              This trip was memorable because it was different from my usual life in Almaty.
+            </p>
+            <p>
+              I would like to visit Vietnam again in the future.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="fade">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-number">04 · Photo gallery</div>
+          <h2>Some moments from my life</h2>
+          <p class="section-subtitle">
+            You can replace these four blocks with your own photos before the presentation.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <div class="photo">
+            <div class="photo-caption">
+              <strong>Vietnam</strong><br>
+              A photo from my summer trip.
+            </div>
+          </div>
+
+          <div class="photo">
+            <div class="photo-caption">
+              <strong>Technology</strong><br>
+              I enjoy computers and IT.
+            </div>
+          </div>
+
+          <div class="photo">
+            <div class="photo-caption">
+              <strong>Sport</strong><br>
+              I like going to the gym and staying active.
+            </div>
+          </div>
+
+          <div class="photo">
+            <div class="photo-caption">
+              <strong>Friends & city</strong><br>
+              I enjoy spending free time with my friends.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="future" class="fade">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-number">05 · My future plans</div>
+          <h2>What I want to achieve</h2>
+        </div>
+
+        <div class="future-layout">
+          <div class="big-card">
+            <h3>My main goal</h3>
+            <p>
+              In the future I want to develop my skills in IT and network security.
+              I want to get more practical experience and build interesting projects.
+            </p>
+            <p>
+              I also want to improve my English because it is very important in technology,
+              education and travelling.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>Now</strong>
+              <span>Study, improve English and learn more about cybersecurity.</span>
+            </div>
+
+            <div class="timeline-item">
+              <strong>Next step</strong>
+              <span>Get practical experience and take part in real IT projects.</span>
+            </div>
+
+            <div class="timeline-item">
+              <strong>Later</strong>
+              <span>Build a good career, travel more and continue learning new things.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai" class="fade">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-number">06 · How AI helped me</div>
+          <h2>AI as a useful assistant</h2>
+        </div>
+
+        <div class="ai-box">
+          <p>
+            I used ChatGPT while working on this project. It helped me organize my ideas,
+            improve some English sentences and create a better structure for my website.
+            I checked the final information and changed several parts so that the website
+            sounded more personal.
+          </p>
+
+          <div class="ai-grid">
+            <div class="ai-item">
+              <h3>1. Which AI tool did I use?</h3>
+              <p>I used ChatGPT.</p>
+            </div>
+
+            <div class="ai-item">
+              <h3>2. What did AI help me with?</h3>
+              <p>It helped with English, ideas, website structure and design.</p>
+            </div>
+
+            <div class="ai-item">
+              <h3>3. What did I improve?</h3>
+              <p>I edited the text, added personal information and checked the final result.</p>
+            </div>
+
+            <div class="ai-item">
+              <h3>4. Advantages and disadvantages</h3>
+              <p>
+                AI is fast and useful, but it can make mistakes.
+                It is important to check its answers and use your own ideas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Made for my Pre-Intermediate English project · 2026
+    </div>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll(".holiday-slide");
+    const dots = document.querySelectorAll(".slider-dot");
+    const prevSlide = document.getElementById("prevSlide");
+    const nextSlide = document.getElementById("nextSlide");
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === currentSlide);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentSlide);
+      });
+    }
+
+    prevSlide.addEventListener("click", () => showSlide(currentSlide - 1));
+    nextSlide.addEventListener("click", () => showSlide(currentSlide + 1));
+
+    dots.forEach(dot => {
+      dot.addEventListener("click", () => {
+        showSlide(Number(dot.dataset.slide));
+      });
+    });
+
+    const elements = document.querySelectorAll(".fade");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    elements.forEach(element => observer.observe(element));
+  </script>
+</body>
+</html>
