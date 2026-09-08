@@ -407,32 +407,29 @@
       box-shadow: var(--shadow);
     }
 
+    .photo {
+      background-size: cover;
+      background-position: center;
+    }
+
     .photo:nth-child(1) {
-      background: linear-gradient(160deg, #4bb5bf, #d8c47e);
+      background-image: url("gallery1.jpg");
+      background-color: #4bb5bf;
     }
 
     .photo:nth-child(2) {
-      background: linear-gradient(160deg, #7d6bea, #1c2545);
+      background-image: url("gallery2.jpg");
+      background-color: #7d6bea;
     }
 
     .photo:nth-child(3) {
-      background: linear-gradient(160deg, #202632, #75898f);
+      background-image: url("gallery3.jpg");
+      background-color: #202632;
     }
 
     .photo:nth-child(4) {
-      background: linear-gradient(160deg, #f49d6e, #6356bf);
-    }
-
-    .photo::before {
-      content: "Replace with your photo";
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      color: rgba(255,255,255,.75);
-      font-size: .9rem;
-      text-align: center;
-      padding: 20px;
+      background-image: url("gallery4.jpg");
+      background-color: #6356bf;
     }
 
     .photo-caption {
@@ -758,7 +755,7 @@
           <div class="section-number">04 · Photo gallery</div>
           <h2>Some moments from my life</h2>
           <p class="section-subtitle">
-            You can replace these four blocks with your own photos before the presentation.
+            Here are some moments from my life, interests and travels.
           </p>
         </div>
 
